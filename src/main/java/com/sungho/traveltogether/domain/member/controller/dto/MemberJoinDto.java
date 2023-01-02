@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class MemberJoinForm {
+public class MemberJoinDto {
 
     @NotBlank
     private String name;
