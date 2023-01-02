@@ -2,11 +2,11 @@ package com.sungho.traveltogether.domain.party;
 
 import com.sungho.traveltogether.global.entity.Address;
 import com.sungho.traveltogether.global.entity.BaseTime;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,12 +2,14 @@ package com.sungho.traveltogether.domain.party;
 
 import com.sungho.traveltogether.domain.member.entity.Member;
 import com.sungho.traveltogether.global.entity.BaseTime;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.FetchType.LAZY;
+import javax.persistence.*;
+
+import static javax.persistence.FetchType.LAZY;
+
 
 @Entity
 @Builder
