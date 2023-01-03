@@ -5,6 +5,7 @@ import com.sungho.traveltogether.domain.party.PartyMember;
 import com.sungho.traveltogether.global.entity.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +29,9 @@ public class Member extends BaseTime {
 
     @Column(nullable = false, updatable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, length = 100)
+    private String password;
 
     @Column(length = 13, nullable = false, unique = true)
     private String phone;

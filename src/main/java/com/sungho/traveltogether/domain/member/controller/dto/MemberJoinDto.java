@@ -1,8 +1,7 @@
 package com.sungho.traveltogether.domain.member.controller.dto;
 
 import com.sungho.traveltogether.domain.GenderType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -10,14 +9,13 @@ import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberJoinDto {
 
     @NotBlank
     private String name;
-
-    @NotBlank
-    private String nickname;
 
     @NotBlank
     @Email(message = "이메일 형식에 맞게 작성해야 합니다.")
