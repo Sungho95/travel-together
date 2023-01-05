@@ -22,9 +22,15 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
+    public Member findVerifiedMember(Long id) {
+
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 회원입니다."));
+    }
+
     private void verifyExistsEmail(String email) {
-        Optional<Member> member = memberRepository.findByEmail(email);
-        if (member.isPresent())
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        if (optionalMember.isPresent())
             throw new RuntimeException("Member exists");
     }
 }

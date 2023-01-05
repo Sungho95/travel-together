@@ -2,6 +2,7 @@ package com.sungho.traveltogether.domain.member.controller;
 
 import com.sungho.traveltogether.domain.member.controller.dto.MemberJoinDto;
 import com.sungho.traveltogether.domain.member.controller.dto.MemberLoginDto;
+import com.sungho.traveltogether.domain.member.controller.dto.MemberPatchDto;
 import com.sungho.traveltogether.domain.member.entity.Member;
 import com.sungho.traveltogether.domain.member.mapper.MemberMapper;
 import com.sungho.traveltogether.domain.member.service.MemberService;
@@ -10,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -58,13 +56,22 @@ public class MemberController {
         return "members/login";
     }
 
-    @PostMapping("/login")
-    public String login(@Valid @ModelAttribute("member") MemberLoginDto memberLoginDto, BindingResult result) {
+    @GetMapping("/{id}")
+    public String myPageForm(@PathVariable("id") Long id, Model model) {
+        Member findMember = memberService.findVerifiedMember(id);
 
+        model.addAttribute("member", findMember);
+
+        return "members/my-page";
+    }
+
+    @PatchMapping("/{id}")
+    public String patchMyPage(@PathVariable("id") Long id, MemberPatchDto memberPatchDto, BindingResult result) {
         if (result.hasErrors()) {
-            return "members/login";
+            return "members/my-page";
         }
+        // 프로필 수정 로직
 
-        return "redirect:/";
+       return "redirect:/member/my-page";
     }
 }

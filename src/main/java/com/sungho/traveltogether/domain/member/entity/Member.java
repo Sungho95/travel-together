@@ -45,7 +45,7 @@ public class Member extends BaseTime {
 
     @ManyToOne
     @JoinColumn(name = "member_profile_id")
-    private MemberProfile memberProfile;
+    private MemberProfile profile;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PartyMember> partyMembers = new ArrayList<>();
