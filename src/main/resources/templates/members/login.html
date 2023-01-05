@@ -13,17 +13,23 @@
     <h2>Travel Together 로그인</h2>
 </div>
 <div class="w-50 p-3 position-absolute top-50 start-50 translate-middle">
-    <form role="form" action="/members/login" th:object="${loginForm}" method="post">
+    <form role="form" th:action="@{/members/login}" th:object="${loginForm}" method="post">
+
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">이메일</label>
-            <input type="email" id="form2Example1" class="form-control" placeholder="이메일을 입력하세요"/>
+            <label class="form-label" for="email">이메일</label>
+            <input type="email" id="email" class="form-control" placeholder="이메일을 입력하세요"/>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">비밀번호</label>
-            <input type="password" id="form2Example2" class="form-control" placeholder="비밀번호를 입력하세요"/>
+            <label class="form-label" for="password">비밀번호</label>
+            <input type="password" id="password" class="form-control" placeholder="비밀번호를 입력하세요"/>
+        </div>
+
+        <!-- Error response -->
+        <div th:if="${error == 'true'}">
+            <div class="loginErrorText" th:text="${exception}"></div>
         </div>
 
         <!-- 2 column grid layout for inline styling -->
